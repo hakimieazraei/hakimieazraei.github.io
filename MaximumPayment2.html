@@ -1,0 +1,117 @@
+<html>
+<title>Maximum Accessories Payment</title>
+<style>
+    table, th, td {
+  border: 4px solid black;
+  border-collapse: collapse;
+}
+
+</style>
+<body style="background-image: url('https://cdn.hipwallpaper.com/i/1/6/fcEmsG.jpg');">
+    <form action="/action_page.php">
+    <h1 style="background-color: black; color: white; font-family: Arial, Helvetica, sans-serif; text-align: center;">PAYMENT SECTION (ACCESSORIES) </h1>
+    <fieldset style="background-color:gainsboro; text-align: center;">
+    <table width="1320px";>
+        <tr>
+            <th width="300px" style="background-color: white;">
+                <!--The customer choose the accessories-->
+                <p><a href="file:///C:/Users/VersaPro/Desktop/Assignment%20-%20Muhd%20Hakimie%20Azraei/MaximumAccessories.html">Return to Maximum Accessories</a></p>
+    <p><br>STEP 1 (Select accessories & quantity) : </p>
+    <label for="acc">Accessories :</label>
+    <select name="acc" id="acc">
+        <option>-- Select product --</option>
+        <option value="VANS SNAPBACK CAP">VANS SNAPBACK CAP</option>
+        <option value="LANYARD VANS BLACK/WHITE CHECKER">LANYARD VANS BLACK/WHITE CHECKER</option>
+        <option value="LANYARD FASHION WRISTLET VEAIAI">LANYARD FASHION WRISTLET VEAIAI</option>
+        <option value="RUBBER PHONE STRAP (THRASHER)">RUBBER PHONE STRAP (THRASHER)</option>
+        <option value="CHECKERBOARD SHOELACES">CHECKERBOARD SHOELACES</option>
+      </select>
+      <br><br>
+    <!--The customer insert the quantity of accessories-->
+    <label for="quan">Quantity :</label>
+    <input type="text" id="quan" name="quan"><br><br>
+      <!--The customer choose the courier-->
+    <br><hr><p>STEP 2 (Select courier) : </p>
+    <p>Courier Information : <br><br>
+    <ul>
+        <li>J&T Express - RM5.00 (within 1-2 days)</li>
+        <li>Poslaju - RM4.00 (within 3 days)</li>
+        <li>Ninja Van - RM3.00 (within 5 days) </li>
+    </ul>
+    <label for="cou">Courier :</label>
+    <select name="cou" id="cou">
+        <option>-- Select courier --</option>
+        <option value="J&T Express">J&T Express</option>
+        <option value="Poslaju">Poslaju</option>
+        <option value="Ninja Van">Ninja Van</option>
+      </select>
+      <br><br>
+      <!--The customer fill the postage details-->
+            </th>
+            <th width="220px"  style="background-color: white;">
+                <p>STEP 3 (Receiver details) : <br><br></p>
+    <label for="rname">Name :</label>
+    <input type="text" name="rname" id="rname"><br><br>
+    <label for="pnumber">Phone :</label>
+    <input type="text" name="pnumber" id="pnumber"><br>
+    <br>Address : <textarea name=“address” id="addr"></textarea><br><br>
+    <input type="checkbox" name="confirm" value="confirm">
+    <label for="confirm">I declare that I have confirmed the receiver details</label><br><hr>
+    <p style="color: red;">Terms & Condition : <br>RETURNS : WITHIN 15 DAYS (FOR A FEE OF RM 5.00)</p><hr><br>
+    <input type="radio" name="theCondition" value="agree">Agree with Terms & Condition<br><br>
+    <input type="button" value="Proceed Payment" onclick="Pay()"><br><br>
+            </th>
+            <th style="background-color: white;">
+                <p>Payment Receipt</p><br>
+                <p id ="disp" style="text-align: center;"></p><br>
+                <p style="color: red; font-size: 15px;">** Screenshot this receipt for later use (if necessary). **
+                <br><p><a href="file:///C:/Users/VersaPro/Desktop/Assignment%20-%20Muhd%20Hakimie%20Azraei/MaximumHome.html">Return to Maximum Home</a></p>
+            </th>
+        </tr>
+    </table>
+</fieldset>
+</form>
+
+<script>
+    function Pay()
+    {
+        var q = parseInt(document.getElementById("quan").value);
+        var n = document.getElementById("rname").value;
+        var pn = document.getElementById("pnumber").value;
+        var ad = document.getElementById("addr").value;
+        var ac = document.getElementById("acc").value;
+        var c = document.getElementById("cou").value;
+        var rm;
+        var payment;
+
+        if(ac=="VANS SNAPBACK CAP")
+            rm = 30;
+        
+        else if(ac=="LANYARD VANS BLACK/WHITE CHECKER")
+            rm = 19;
+
+        else if(ac=="RUBBER PHONE STRAP (THRASHER)")
+            rm = 8;
+
+        else if(ac=="LANYARD FASHION WRISTLET VEAIAI")
+            rm = 19;
+        
+        else if(ac=="CHECKERBOARD SHOELACES")
+            rm = 10;
+
+        if(c=="J&T Express")
+            payment = (rm*q)+5;
+
+        else if(c=="Poslaju")
+            payment = (rm*q)+4;
+
+        else if(c=="Ninja Van")
+            payment = (rm*q)+3;
+
+        document.getElementById("disp").innerHTML="(Payment Successful !) <br>"+
+        "<br>Name : "+n+"<br>Phone Number : "+pn+"<br>Address : "+ad+"<br>Accessories Purchased : "+ac+
+        "<br>Total Paid : RM "+payment.toFixed(2)+"<br><br>Accessories will be shipped on tomorrow by "+c;
+    }
+</script>
+</body>
+</html>
